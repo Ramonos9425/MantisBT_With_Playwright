@@ -3,10 +3,11 @@ import { ManageProjectPages } from '../pages/manageProjectPages';
 import { LoginFlows } from '../support/flows/loginFlows';
 import LoginFixtures from '../fixtures/loginFixtures';
 import { InitialScreenPages } from '../pages/initialScreenPages';
+import ManageProjectFixtures from '../fixtures/manageProjectFixtures';
 import ManageProjectLocators from '../locators/manageProjectsLocators';
 import Config from '../support/config.json'
-//npx playwright test tests/removeProjectTests.spec.ts --headed
-test.describe('Remove a Project', () => {
+//npx playwright test tests/createVersionTests.spec.ts --headed
+test.describe('Create a Version', () => {
 
     let manageProjectPages = null;
     let loginFlows = null;
@@ -21,7 +22,7 @@ test.describe('Remove a Project', () => {
         
       })
 
-      test('Remove Project Sucess', async({ page }) => {
+      test('Create Version Sucess', async({ page }) => {
 
         loginFlows = new LoginFlows(page);
         initialScreenPages = new InitialScreenPages(page);
@@ -31,9 +32,10 @@ test.describe('Remove a Project', () => {
         await initialScreenPages.selectManager()
         await manageProjectPages.selectManageProjects()
         await manageProjectPages.selectCreatedProject()
-        await manageProjectPages.selectDeleteProject()
-        await manageProjectPages.selectConfirmDeleteProject()
-        await expect(page.locator(ManageProjectLocators.txCreatedProject)).toBeHidden() //Arrumar aqui colocar um elemento nao existe
+        await manageProjectPages.fillVersion(ManageProjectFixtures.nameVersion)
+        await manageProjectPages.selectAddVersion()
+        await manageProjectPages.selectProceed()
+        await expect(page.locator(ManageProjectLocators.textValidationVersion)).toHaveText(ManageProjectFixtures.nameVersion)
 
       })
 })

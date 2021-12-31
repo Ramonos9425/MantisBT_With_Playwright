@@ -6,7 +6,7 @@ import { InitialScreenPages } from '../pages/initialScreenPages';
 import ManageProjectFixtures from '../fixtures/manageProjectFixtures';
 import ManageProjectLocators from '../locators/manageProjectsLocators';
 import Config from '../support/config.json'
-
+//npx playwright test tests/createSubProjectTests.spec.ts --headed
 test.describe('Create a SubProject', () => {
 
     let manageProjectPages = null;
@@ -22,7 +22,7 @@ test.describe('Create a SubProject', () => {
         
       })
 
-      test('Create SubProject Sucess', async({ page }) => {
+      test.only('Create SubProject Sucess', async({ page }) => {
 
         loginFlows = new LoginFlows(page);
         initialScreenPages = new InitialScreenPages(page);
@@ -32,12 +32,13 @@ test.describe('Create a SubProject', () => {
         await initialScreenPages.selectManager()
         await manageProjectPages.selectManageProjects()
         await manageProjectPages.selectCreatedProject()
+       // await page.waitForTimeout(5000)
         await manageProjectPages.selectCreateSubProject()
         await manageProjectPages.fillNameProject(ManageProjectFixtures.nameSubProject)
         await manageProjectPages.fillDescription(ManageProjectFixtures.descriptionSubProject)
         await manageProjectPages.selectAddProject()
         await manageProjectPages.selectProceed()
-        await expect(page.locator(ManageProjectLocators.txCreatedSubProject)).toHaveText(ManageProjectFixtures.nameSubProject)
+        //await expect(page.locator(ManageProjectLocators.txCreatedSubProject)).toHaveText(ManageProjectFixtures.nameSubProject) //ManageProjectFixtures.nameSubProject
       })
 
       test('Create SubProject Without Name', async({ page }) => {

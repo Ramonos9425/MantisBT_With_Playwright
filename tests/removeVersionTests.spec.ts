@@ -5,8 +5,8 @@ import LoginFixtures from '../fixtures/loginFixtures';
 import { InitialScreenPages } from '../pages/initialScreenPages';
 import ManageProjectLocators from '../locators/manageProjectsLocators';
 import Config from '../support/config.json'
-//npx playwright test tests/removeProjectTests.spec.ts --headed
-test.describe('Remove a Project', () => {
+//npx playwright test tests/removeVersionTests.spec.ts --headed
+test.describe('Edit a Version', () => {
 
     let manageProjectPages = null;
     let loginFlows = null;
@@ -21,7 +21,7 @@ test.describe('Remove a Project', () => {
         
       })
 
-      test('Remove Project Sucess', async({ page }) => {
+      test('Edit Version Sucess', async({ page }) => {
 
         loginFlows = new LoginFlows(page);
         initialScreenPages = new InitialScreenPages(page);
@@ -31,9 +31,8 @@ test.describe('Remove a Project', () => {
         await initialScreenPages.selectManager()
         await manageProjectPages.selectManageProjects()
         await manageProjectPages.selectCreatedProject()
-        await manageProjectPages.selectDeleteProject()
-        await manageProjectPages.selectConfirmDeleteProject()
-        await expect(page.locator(ManageProjectLocators.txCreatedProject)).toBeHidden() //Arrumar aqui colocar um elemento nao existe
-
+        await manageProjectPages.selectDeleteVersion()
+        await manageProjectPages.selectConfirmDeleteVersion()
+        await expect(page.locator(ManageProjectLocators.textValidationVersion)).toBeHidden()  //no have element
       })
 })

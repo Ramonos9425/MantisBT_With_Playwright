@@ -5,7 +5,7 @@ import LoginFixtures from '../fixtures/loginFixtures';
 import { InitialScreenPages } from '../pages/initialScreenPages';
 import ManageProjectLocators from '../locators/manageProjectsLocators';
 import Config from '../support/config.json'
-
+//npx playwright test tests/removeCategoryTests.spec.ts --headed
 test.describe('Create a Category', () => {
 
     let manageProjectPages = null;
@@ -34,7 +34,7 @@ test.describe('Create a Category', () => {
         await manageProjectPages.selectDeleteCategory()
         await manageProjectPages.selectConfirmDeleteCategory()
         await manageProjectPages.selectProceed()
-       // await expect(page.locator(ManageProjectLocators.textValidationCategory))//nao existir o elemento
+        await expect(page.locator(ManageProjectLocators.textValidationCategory)).toBeHidden()//nao existir o elemento
 
       })
 })

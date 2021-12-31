@@ -5,7 +5,7 @@ import LoginLocators from '../locators/loginLocators';
 import Config from '../support/config.json';
 import loginFixtures from '../fixtures/loginFixtures';
 
-//npx playwright test --headed
+//npx playwright test tests/loginMantisTests.spec.ts --headed
 test.describe('Tests Login', ()=> {
 
   let loginPages = null;

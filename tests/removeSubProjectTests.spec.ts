@@ -5,7 +5,7 @@ import LoginFixtures from '../fixtures/loginFixtures';
 import { InitialScreenPages } from '../pages/initialScreenPages';
 import ManageProjectLocators from '../locators/manageProjectsLocators';
 import Config from '../support/config.json'
-
+//npx playwright test tests/removeSubProjectTests.spec.ts --headed
 test.describe('Remove a SubProject', () => {
 
     let manageProjectPages = null;
@@ -32,9 +32,9 @@ test.describe('Remove a SubProject', () => {
         await manageProjectPages.selectManageProjects()
         await manageProjectPages.selectCreatedProject()
         await manageProjectPages.selectCreateSubProject()
-        await manageProjectPages.selectDeleteProject()
+        await manageProjectPages.selectDeleteProject() //problema para deletar o subprojeto
         await manageProjectPages.selectConfirmDeleteProject()
-       // await expect(page.locator(ManageProjectLocators.txCreatedSubProject))//nao existir o elemento
+        await expect(page.locator(ManageProjectLocators.txCreatedSubProject)).toBeHidden()//nao existir o elemento
 
       })
 })

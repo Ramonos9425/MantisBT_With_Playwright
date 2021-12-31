@@ -6,7 +6,7 @@ import { InitialScreenPages } from '../pages/initialScreenPages';
 import ManageProjectFixtures from '../fixtures/manageProjectFixtures';
 import ManageProjectLocators from '../locators/manageProjectsLocators';
 import Config from '../support/config.json'
-
+//npx playwright test tests/createCategoryTests.spec.ts --headed
 test.describe('Create a Category', () => {
 
     let manageProjectPages = null;
@@ -32,7 +32,7 @@ test.describe('Create a Category', () => {
         await initialScreenPages.selectManager()
         await manageProjectPages.selectManageProjects()
         await manageProjectPages.selectCreatedProject()
-        await manageProjectPages.fillNameCategory(ManageProjectFixtures.nameCategory)
+        await manageProjectPages.fillNewCategory(ManageProjectFixtures.nameCategory)
         await manageProjectPages.selectCreateCategory()
         await expect(page.locator(ManageProjectLocators.textValidationCategory)).toHaveText(ManageProjectFixtures.nameCategory)
 

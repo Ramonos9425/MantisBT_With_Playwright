@@ -52,12 +52,20 @@ export class ManageProjectPages{
         await this.page.click(manageProjectsLocators.btConfirmDeleteProject)
     }
 
+    async selectCreateSubProject(){
+        await this.page.click(manageProjectsLocators.btCreateSubproject)
+    }
+
     async selectCreatedSubProject(){
         await this.page.click(manageProjectsLocators.txCreatedSubProject)
     }
 
+    async fillNewCategory(category){
+        await this.page.type(manageProjectsLocators.txNewCategory, category)
+    }
+
     async fillNameCategory(nameCategory){
-        await this.page.type(manageProjectsLocators.txNameCategory, nameCategory)
+        await this.page.type(manageProjectsLocators.txNameCategory, nameCategory) //Adicionar um clear()
     }
 
     async selectCreateCategory(){
@@ -65,7 +73,7 @@ export class ManageProjectPages{
     }
 
     async selectAssignTo(nameAssign){
-        await this.page.type(manageProjectsLocators.btaddCategory, nameAssign)
+        await this.page.type(manageProjectsLocators.cbAssignTo, nameAssign)
     }
 
     async selectUpdateCategory(){
@@ -80,4 +88,39 @@ export class ManageProjectPages{
         await this.page.click(manageProjectsLocators.btConfirmDeleteCategory)
     }
 
+    async fillVersion(nameVersion){
+        await this.page.type(manageProjectsLocators.txNameVersion, nameVersion)
+    }
+
+    async selectAddVersion(){
+        await this.page.click(manageProjectsLocators.btAddVerion)
+    }
+
+    async selectEditVersion(){
+        await this.page.click(manageProjectsLocators.btEditVersion)
+    }
+
+    async fillEditVersion(nameVersion){
+        await this.page.type(manageProjectsLocators.txNameEditVersion, nameVersion) //Precisa colocar o clear()
+    }
+
+    async fillDescriptionVersion(descriptionVersion){
+        await this.page.type(manageProjectsLocators.txDescriptionVersion, descriptionVersion) //Precisa colocar o clear()
+    }
+
+    async selectReleasedVersion(){
+        await this.page.click(manageProjectsLocators.sbReleased)
+    }
+
+    async selectUpdateVersion(){
+        await this.page.click(manageProjectsLocators.btUpdateVersion)
+    }
+
+    async selectDeleteVersion(){
+        await this.page.click(manageProjectsLocators.btDeleteVersion)
+    }
+
+    async selectConfirmDeleteVersion(){
+        await this.page.click(manageProjectsLocators.btConfirmDeleteVersion)
+    }
 }
