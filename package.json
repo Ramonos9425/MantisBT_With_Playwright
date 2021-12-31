@@ -1,0 +1,17 @@
+{
+  "name": "projeto-mantis-playwright",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "jest"
+  },
+  "keywords": [],
+  "author": "Ramon",
+  "license": "ISC",
+  "devDependencies": {
+    "@playwright/test": "^1.17.1",
+    "jest": "^27.4.5",
+    "playwright": "^1.17.1"
+  }
+}
